@@ -16,7 +16,10 @@ resource "aws_iam_policy" "restic-bucket-access" {
         "s3:ListBucketMultipartUploads",
         "s3:ListMultipartUploadParts"
       ]
-      Resource = aws_s3_bucket.r640-backup.arn
+      Resource = [
+        aws_s3_bucket.r640-backup.arn,
+        "${aws_s3_bucket.r640-backup.arn}/*"
+      ]
     }]
   })
 }

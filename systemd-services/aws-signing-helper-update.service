@@ -1,0 +1,15 @@
+# Place this in ~/.config/systemd/user or whichever systemd service directory you deem appropriate
+[Unit]
+Description=AWS Signing Helper Update Daemon
+After=network.target
+
+[Service]
+# Replace this with your desired user/group
+User=andrew
+Group=andrew
+WorkingDirectory=/home/andrew
+ExecStart=/home/andrew/scripts/aws_signing_helper_update.sh
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
